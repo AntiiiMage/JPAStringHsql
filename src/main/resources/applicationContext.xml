@@ -16,7 +16,7 @@
 			<value>org.hsqldb.jdbcDriver</value>
 		</property>
 		<property name="url">
-			<value>jdbc:hsqldb:mem:mydatabase</value>
+			<value>jdbc:hsqldb:hsql://localhost:9001/</value>
 		</property>
 		<property name="username">
 			<value>sa</value>
