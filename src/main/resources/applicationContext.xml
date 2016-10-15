@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 	<tx:annotation-driven />
 	<context:annotation-config />
-	<bean id="personDao" class="com.antiiimage.springlearing.jpa.dao.PersonDaoImpl" />
+	<bean id="payEntityDao" class="com.antiiimage.springlearing.jpa.dao.PayEntityDaoImpl" />
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -16,7 +16,7 @@
 			<value>org.hsqldb.jdbcDriver</value>
 		</property>
 		<property name="url">
-			<value>jdbc:hsqldb:hsql://localhost:9001/</value>
+			<value>jdbc:hsqldb:hsql://localhost:9001</value>
 		</property>
 		<property name="username">
 			<value>sa</value>
@@ -39,6 +39,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.default_schema">PAY_TEST</prop>
 			</props>
 		</property>
 	</bean>

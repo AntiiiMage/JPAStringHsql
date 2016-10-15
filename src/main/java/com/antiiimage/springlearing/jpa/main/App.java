@@ -1,25 +1,31 @@
 package com.antiiimage.springlearing.jpa.main;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.antiiimage.springlearing.jpa.dao.PersonDao;
-import com.antiiimage.springlearing.jpa.domain.Person;
+import com.antiiimage.springlearing.jpa.dao.PayEntityDao;
+import com.antiiimage.springlearing.jpa.domain.PayEntity;
+import com.antiiimage.springlearing.jpa.domain.PayEntityDetails;
 
 
 public class App {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		PersonDao personDao = (PersonDao) context.getBean("personDao");
-		Person peter = new Person("XML", "HTML");
-		Person nasta = new Person("Java", "SQL");
-		personDao.save(peter);
-		personDao.save(nasta);
-		List<Person> persons = personDao.getAll();
+		PayEntityDao personDao = (PayEntityDao) context.getBean("payEntityDao");
+		PayEntity payEntity = new PayEntity();
+		payEntity.setEntityCode("14024");
+		payEntity.setCountryCode2("HK");
+		PayEntityDetails payDetail = new PayEntityDetails();
+		payDetail.setPayEntity(payEntity);
+		payEntity.setPayEntityDetails(Arrays.asList(payDetail));
+		personDao.save(payEntity);
+		List<PayEntity> persons = personDao.getAll();
 		
-		for(Person p : persons){
+		for(PayEntity p : persons){
 			System.out.println(p.toString());
 		}
 		context.close();

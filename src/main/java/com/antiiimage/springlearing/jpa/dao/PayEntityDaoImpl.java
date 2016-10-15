@@ -7,22 +7,22 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.antiiimage.springlearing.jpa.domain.Person;
+import com.antiiimage.springlearing.jpa.domain.PayEntity;
 
 @Transactional
-public class PersonDaoImpl implements PersonDao {
+public class PayEntityDaoImpl implements PayEntityDao {
 
 	@PersistenceContext
 	private EntityManager em;
 	@Override
-	public Long save(Person p) {
+	public String save(PayEntity p) {
 		em.persist(p);
-		return p.getId();
+		return p.getEntityCode();
 	}
 
 	@Override
-	public List<Person> getAll() {
-		return em.createQuery("SELECT p FROM Person p", Person.class).getResultList();
+	public List<PayEntity> getAll() {
+		return em.createQuery("SELECT payentity FROM PayEntity payentity", PayEntity.class).getResultList();
 	}
 
 }
